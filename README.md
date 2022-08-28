@@ -243,3 +243,23 @@ for (let i = 0; i < list.length; i++) {
   // ...
 }
 ```
+
+## Use getters and setters
+```javascript
+// GOOD
+class Person {
+    constructor(name) {
+        this.setName(name); // name is private
+    }
+    getName() { // a "getter"
+        return this._name;
+    }
+    setName(newName) { // a "setter"
+				// ... validate before updating
+        if (newName === '') {
+            throw 'The name cannot be empty';
+        }
+        this._name= newName;
+    }
+}
+```
