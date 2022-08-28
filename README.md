@@ -29,6 +29,27 @@ const yyyymmdstr = moment().format("YYYY/MM/DD");
 const currentDate = moment().format("YYYY/MM/DD");
 ```
 
+## Avoid Mental Mapping
+
+```javascript
+// Bad
+
+const locations = ["Austin", "New York", "San Francisco"];
+locations.forEach(l => {
+  doStuff();
+  // Wait, what is `l` for again?
+  dispatch(l);
+});
+
+// Good
+
+const locations = ["Austin", "New York", "San Francisco"];
+locations.forEach(location => {
+  doStuff();
+  dispatch(location);
+});
+```
+
 ## Encapsulate Conditionals
 
 ```javascript
