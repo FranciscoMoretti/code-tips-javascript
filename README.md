@@ -89,6 +89,27 @@ const MILLISECONDS_PER_DAY = 60 * 60 * 24 * 1000; //86400000;
 setTimeout(blastOff, MILLISECONDS_PER_DAY);
 ```
 
+##  Use Explanatory Varibles
+
+```javascript
+// Bad
+
+const address = "One Infinite Loop, Cupertino 95014";
+const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
+saveCityZipCode(
+  address.match(cityZipCodeRegex)[1],
+  address.match(cityZipCodeRegex)[2]
+);
+
+
+// Good
+
+const address = "One Infinite Loop, Cupertino 95014";
+const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
+const [_, city, zipCode] = address.match(cityZipCodeRegex) || [];
+saveCityZipCode(city, zipCode);
+```
+
 ## Encapsulate Conditionals
 
 ```javascript
