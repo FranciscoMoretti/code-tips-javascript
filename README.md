@@ -110,6 +110,27 @@ const [_, city, zipCode] = address.match(cityZipCodeRegex) || [];
 saveCityZipCode(city, zipCode);
 ```
 
+## Don't add unneeded context
+
+```javascript
+// Bad
+
+const Car = {
+  carMake: "Honda",
+  carModel: "Accord",
+  carColor: "Blue"
+};
+
+
+// Good
+
+const Car = {
+  make: "Honda",
+  model: "Accord",
+  color: "Blue"
+};
+```
+
 ## Encapsulate Conditionals
 
 ```javascript
