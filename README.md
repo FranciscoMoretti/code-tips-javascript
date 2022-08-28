@@ -263,3 +263,25 @@ class Person {
     }
 }
 ```
+
+## Prefer ES6 classes over ES5 functions
+
+```javascript
+// BAD
+const Animal = function(age) {
+  if (!(this instanceof Animal)) {
+    throw new Error("Instantiate Animal with `new`");
+  }
+  this.age = age;
+};
+Animal.prototype.move = function move() {};
+
+
+// GOOD
+class Animal {
+  constructor(age) {
+    this.age = age;
+  }
+  move() {/* ... */}
+}
+``` 
