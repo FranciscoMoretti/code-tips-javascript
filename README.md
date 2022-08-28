@@ -207,3 +207,23 @@ function newRequestModule(url){
 	// ...
 }
 ```
+
+## Avoid Negative Conditionals
+
+```javascript
+// BAD
+function isDOMNodeNotPresent(node) {
+  // ...
+}
+if (!isDOMNodeNotPresent(node)) {
+  // ...
+}
+
+// GOOD
+function isDOMNodePresent(node) {
+  // ...
+}
+if (isDOMNodePresent(node)) {
+  // ...
+}
+```
