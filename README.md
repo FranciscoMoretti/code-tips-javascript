@@ -50,6 +50,45 @@ locations.forEach(location => {
 });
 ```
 
+## Few Function Arguments
+
+```javascript
+// Bad
+
+function createMenu(title, body, buttonText, cancellable) {
+  // ...
+}
+createMenu("Foo", "Bar", "Baz", true);
+
+
+// Good
+
+function createMenu({ title, body, buttonText, cancellable }) {
+  // ...
+}
+createMenu({
+  title: "Foo",
+  body: "Bar",
+  buttonText: "Baz",
+  cancellable: true
+});
+```
+
+## Don’t Use Magic Numbers
+
+```javascript
+// Bad
+
+setTimeout(blastOff, 86400000); // What is 86400000?
+
+
+// Good 
+
+// Declare them as capitalized named constants.
+const MILLISECONDS_PER_DAY = 60 * 60 * 24 * 1000; //86400000;
+setTimeout(blastOff, MILLISECONDS_PER_DAY);
+```
+
 ## Encapsulate Conditionals
 
 ```javascript
