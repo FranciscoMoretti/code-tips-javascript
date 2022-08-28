@@ -4,36 +4,29 @@ Code tips for clean code in Javascript
 ## Use the same vocabulary for the same concept
 
 ```javascript
-// Bad
-
+// BAD
 getUserInfo();
 getClientData();
 getCustomerRecord();
 
-
-// Good
-
+// GOOD
 getUser();
 ```
 
 ## Use pronounceable and meaningful variable names
 
 ```javascript
-// Bad
-
+// BAD
 const yyyymmdstr = moment().format("YYYY/MM/DD");
 
-
-// Good
-
+// GOOD
 const currentDate = moment().format("YYYY/MM/DD");
 ```
 
 ## Avoid Mental Mapping
 
 ```javascript
-// Bad
-
+// BAD
 const locations = ["Austin", "New York", "San Francisco"];
 locations.forEach(l => {
   doStuff();
@@ -41,8 +34,7 @@ locations.forEach(l => {
   dispatch(l);
 });
 
-// Good
-
+// GOOD
 const locations = ["Austin", "New York", "San Francisco"];
 locations.forEach(location => {
   doStuff();
@@ -53,16 +45,13 @@ locations.forEach(location => {
 ## Few Function Arguments
 
 ```javascript
-// Bad
-
+// BAD
 function createMenu(title, body, buttonText, cancellable) {
   // ...
 }
 createMenu("Foo", "Bar", "Baz", true);
 
-
-// Good
-
+// GOOD
 function createMenu({ title, body, buttonText, cancellable }) {
   // ...
 }
@@ -77,14 +66,10 @@ createMenu({
 ## Don’t Use Magic Numbers
 
 ```javascript
-// Bad
-
+// BAD
 setTimeout(blastOff, 86400000); // What is 86400000?
 
-
-// Good 
-
-// Declare them as capitalized named constants.
+// GOOD
 const MILLISECONDS_PER_DAY = 60 * 60 * 24 * 1000; //86400000;
 setTimeout(blastOff, MILLISECONDS_PER_DAY);
 ```
@@ -92,8 +77,7 @@ setTimeout(blastOff, MILLISECONDS_PER_DAY);
 ##  Use Explanatory Varibles
 
 ```javascript
-// Bad
-
+// BAD
 const address = "One Infinite Loop, Cupertino 95014";
 const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 saveCityZipCode(
@@ -102,8 +86,7 @@ saveCityZipCode(
 );
 
 
-// Good
-
+// GOOD
 const address = "One Infinite Loop, Cupertino 95014";
 const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 const [_, city, zipCode] = address.match(cityZipCodeRegex) || [];
@@ -113,17 +96,14 @@ saveCityZipCode(city, zipCode);
 ## Don't add unneeded context
 
 ```javascript
-// Bad
-
+// BAD
 const Car = {
   carMake: "Honda",
   carModel: "Accord",
   carColor: "Blue"
 };
 
-
-// Good
-
+// GOOD
 const Car = {
   make: "Honda",
   model: "Accord",
@@ -134,8 +114,7 @@ const Car = {
 ## Functions should do one thing
 
 ```javascript
-// Bad
-
+// BAD
 function emailClients(clients) {
   clients.forEach(client => {
     const clientRecord = database.lookup(client);
@@ -145,9 +124,7 @@ function emailClients(clients) {
   });
 }
 
-
-// Good 
-
+// GOOD
 function emailActiveClients(clients) {
   clients.filter(isActiveClient).forEach(email);
 }
@@ -160,8 +137,7 @@ function isActiveClient(client) {
 ## Function names should say what they do
 
 ```javascript
-// Bad
-
+// BAD
 function addToDate(date, month) {
   // ...
 }
@@ -169,8 +145,7 @@ const date = new Date();
 // It's hard to tell from the function name what is added
 addToDate(date, 1);
 
-// Good
-
+// GOOD
 function addMonthToDate(month, date) {
   // ...
 }
@@ -180,8 +155,7 @@ addMonthToDate(1, date);
 
 ## No flags function parameters
 ```javascript
-// Bad
-
+// BAD
 function createFile(name, temp) {
   if (temp) {
     fs.create(`./temp/${name}`);
@@ -190,9 +164,7 @@ function createFile(name, temp) {
   }
 }
 
-
-// Good
-
+// GOOD
 function createFile(name) {
   fs.create(name);
 }
@@ -204,15 +176,12 @@ function createTempFile(name) {
 ## Encapsulate Conditionals
 
 ```javascript
-// Bad
-
+// BAD
 if (fsm.state === "fetching" && isEmpty(listNode)){
 	// ...
 }
 
-
-//Good
-
+// GOOD
 function shouldShowSpinner(fsm, listNode) {
 	return fsm.state === "fetching" && isEmpty(listNode);
 }
@@ -224,8 +193,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)){
 
 ## Remove Dead Code
 ```javascript
-// Bad
-
+// BAD
 function oldRequestModule(url){
 	// ...
 }
@@ -233,9 +201,7 @@ function newRequestModule(url){
 	// ...
 }
 
-
-// Good
-
+// GOOD
 function newRequestModule(url){
 	// ...
 }
